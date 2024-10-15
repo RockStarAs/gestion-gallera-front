@@ -40,6 +40,11 @@ const router = createRouter({
       component: () => import('../views/CamadasView.vue')
     },
     {
+      path : '/camadas-general/',
+      name : 'camadasgeneral',
+      component: () => import('../views/CamadasGeneralView.vue')
+    },
+    {
       path : '/cuidos/:id_gallo',
       name : 'cuidos',
       component: () => import('../views/CuidosView.vue')
@@ -48,6 +53,11 @@ const router = createRouter({
       path : '/arbol/:id_gallo',
       name : 'arbol',
       component: () => import('../views/ArbolGenealogico.vue')
+    },
+    {
+      path : '/backup',
+      name : 'backup',
+      component: () => import('../views/BackupView.vue')
     },
   ]
 })

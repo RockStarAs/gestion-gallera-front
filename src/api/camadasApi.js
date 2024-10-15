@@ -8,6 +8,11 @@ export const listarCamadasGalloAPI = async(idCamada)=>{
     return peticion;
 }
 
+export const listarCamadasAPI = async()=>{
+    const peticion = await axios.get(`${ENDPOINT}/listarallcamadas`);
+    return peticion;
+}
+
 export const guardarCamadaAPI = async(camada)=>{
     const peticion = await axios.post(`${ENDPOINT}/guardar`,camada);
     return peticion;

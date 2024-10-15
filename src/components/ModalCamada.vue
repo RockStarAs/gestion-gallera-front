@@ -154,6 +154,8 @@ export default {
             this.camada.cantPollosMacho = 0;
             this.camada.cantPollosHembra = 0;
             this.camada.observacion = "";
+            this.bloqueoCodMadre = false;
+            this.bloqueoCodPadre = false;
         },
         abrirModalAgregar(gallo){
             this.limpiarForm();
@@ -175,6 +177,45 @@ export default {
                 this.bloqueoCodMadre = false;
             }
             this.titulo = `Registrando nueva camada de ${this.gallo.placaNro} - ${this.gallo.nombre}`
+        },
+        async abrirModalAgregarGeneral(){
+            this.limpiarForm();
+            this.agregando = true;
+            this.editando = false
+            this.visible = true;
+            this.titulo = `Registrando nueva camada`
+        },
+        async abrirModalEditarGeneral(idCamada){
+            this.limpiarForm();
+            this.agregando = false;
+            this.editando = true;
+            this.visible = true;
+            this.titulo = `Editando camada`
+            this.codCamada = idCamada;
+            const resp = await buscarCamadaAPI(idCamada);
+            if(resp.status == STATUS_OK){
+                this.seteaCamada(resp.data);
+                this.visible = true;
+            }else{
+                this.verMensajeInfo("No se encontraron datos","red");
+                this.visible = false;
+            }
+        },
+        async abrirModalVerGeneral(idCamada){
+            this.limpiarForm();
+            this.agregando = false;
+            this.editando = false;
+            this.visible = true;
+            this.titulo = `Viendo detalles de camada`
+            this.codCamada = idCamada;
+            const resp = await buscarCamadaAPI(idCamada);
+            if(resp.status == STATUS_OK){
+                this.seteaCamada(resp.data);
+                this.visible = true;
+            }else{
+                this.verMensajeInfo("No se encontraron datos","red");
+                this.visible = false;
+            }
         },
         async abrirModalVer(gallo,idCamada){
             this.limpiarForm();

@@ -144,7 +144,6 @@
 import { FLAG_SEXOS, FLAG_TIPOS_AVE, STATUS_OK } from '@/api/constans';
 import { eliminarGalloAPI, listarGallosAPI } from '@/api/gallosApi';
 import { listarParametros } from '@/api/parametrosApi';
-import BotonTooltip from '@/components/BotonTooltip.vue';
 
 const headers = [
   { key: 'nro_placa',title: 'N° Placa' },
@@ -159,7 +158,6 @@ const headers = [
 export default{
     name: 'ListarGallos',
     components : {
-        BotonTooltip
     },
     data(){
         return {
