@@ -22,3 +22,8 @@ export const eliminarCuidoAPI = async(codCuido) =>{
     const peticion = await axios.delete(`${ENDPOINT}/eliminar/${codCuido}`);
     return peticion;
 }
+
+export const listarAllCuidos = async()=>{
+    const peticion = await axios.get(`${ENDPOINT}/listarallcuidos`);
+    return peticion;
+}

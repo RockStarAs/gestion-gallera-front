@@ -10,12 +10,22 @@
             >
                 <v-container>
                     <v-row>
-                        <v-col cols="12" md="8">
+                        <!-- <v-col cols="12" md="8">
                             <v-text-field
                                 :model-value="nombreGallo"
                                 label="Gallo"
                                 readonly
                             ></v-text-field>
+                        </v-col> -->
+                        <v-col cols="12" md="4">
+                            <v-select
+                                v-model="galloId"
+                                label="Gallo"
+                                :items="gallos"
+                                :item-title="gallo => `${gallo.nro_placa} - ${gallo.nombre}`"
+                                item-value="id_gallo"
+                                :readonly="(!agregar && !modificar) || galloId != null"
+                            ></v-select>
                         </v-col>
                         <v-col cols="12" md="4">
                             <v-text-field
@@ -132,6 +142,7 @@
 <script>
 import { STATUS_CREATED, STATUS_OK, TIPO_HEMBRA, TIPO_MACHO, URL_SIN_FOTO } from '@/api/constans';
 import { guardarCuidoAPI, modificarCuidoAPI } from '@/api/cuidoApi';
+import { listarGallosAPI } from '@/api/gallosApi';
 
 const cuidoInit = Object.freeze({
     nroPlaca : null,
@@ -166,9 +177,22 @@ export default{
             agregar : false,
             modificar : false,
             idCuidado: null,
+            gallos : []
         }
     },
+    async mounted(){
+        await this.buscarGallosxTipo();
+    },
     methods:{
+        async buscarGallosxTipo(){
+            const peticionGallos = await listarGallosAPI();
+            
+            this.gallos = [];
+
+            if(peticionGallos.status == STATUS_OK){
+                this.gallos = peticionGallos.data;
+            }
+        },
         abrirModalAgregar(gallo){
             this.visible = true;
             this.agregar = true;

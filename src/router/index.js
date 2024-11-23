@@ -50,6 +50,11 @@ const router = createRouter({
       component: () => import('../views/CuidosView.vue')
     },
     {
+      path : '/cuidos-general/',
+      name : 'cuidosgeneral',
+      component: () => import('../views/CuidosGeneralView.vue')
+    },
+    {
       path : '/arbol/:id_gallo',
       name : 'arbol',
       component: () => import('../views/ArbolGenealogico.vue')

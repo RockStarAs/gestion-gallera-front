@@ -12,6 +12,7 @@ const drawer = ref(null)
         <v-list-item prepend-icon="mdi-plus" to="/registro-gallo"> Registrar gallo</v-list-item>
         <v-list-item prepend-icon="mdi-food-drumstick" to="/listar-gallos">Listar Gallos</v-list-item>
         <v-list-item prepend-icon="mdi-egg" to="/camadas-general/"> Camadas</v-list-item>
+        <v-list-item prepend-icon="mdi-bottle-tonic-plus" to="/cuidos-general/"> Cuidos</v-list-item>
         <v-list-item prepend-icon="mdi-database-cog" to="/backup"> Respaldos</v-list-item>
       </v-list>
     </v-navigation-drawer>
